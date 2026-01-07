@@ -13,8 +13,9 @@ public class FlashingBlock : MonoBehaviour
     float jumpInterval;
     // Start is called before the first frame update
     void Start()
-    {
-        mat= GetComponent<Renderer>().material;
+    {   
+        time=Time.time;
+        mat = GetComponent<Renderer>().material;
         jumpInterval=GameObject.Find("Player").GetComponent<PlayerController>().jumpTime;
     }
 
