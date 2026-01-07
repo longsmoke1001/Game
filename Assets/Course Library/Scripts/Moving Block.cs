@@ -7,9 +7,11 @@ public class MovingBlock : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float range;
     float jumpInterval;
+    float time;
     // Start is called before the first frame update
     void Start()
     {
+        time = Time.time;
         jumpInterval=GameObject.Find("Player").GetComponent<PlayerController>().jumpTime;
         moveSpeed *= 4;
         range *= 4;
@@ -19,7 +21,7 @@ public class MovingBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time % (2*range/moveSpeed) >= range/moveSpeed)
+        if ((Time.time-time) % (2*range/moveSpeed) >= range/moveSpeed)
         {
             transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
         }

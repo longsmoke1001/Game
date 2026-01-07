@@ -7,6 +7,7 @@ public class FlashingBlock : MonoBehaviour
 {
     Material mat;
     float x;
+    float time;
     [SerializeField] float flashInterval=1f;
     [SerializeField] float alteratingFactor=0;
     float jumpInterval;
@@ -20,7 +21,7 @@ public class FlashingBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        x = Mathf.PingPong(Time.time * 2 / jumpInterval / flashInterval+alteratingFactor*2, 1f);
+        x = Mathf.PingPong((Time.time-time) * 2 / jumpInterval / flashInterval+alteratingFactor*2, 1f);
         mat.color=new Color (0,0,0,x);
         if (x < 0.5)
         {

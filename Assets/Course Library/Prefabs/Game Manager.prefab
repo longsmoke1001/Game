@@ -256,19 +256,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 748191759611986168}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4512537265877531657}
-        m_TargetAssemblyTypeName: GamaManager1, Assembly-CSharp
-        m_MethodName: GotoLevel
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1312672613356332379
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,9 +309,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverText: {fileID: 6838745851270674002}
   winningText: {fileID: 1245969902535686281}
+  levelText: {fileID: 7070240694606479119}
   retry: {fileID: 3993483957231104180}
   exit: {fileID: 1599885295320063744}
   nextLevel: {fileID: 4003136021911222274}
+  exit2: {fileID: 8229071293044219952}
 --- !u!82 &447482124547302491
 AudioSource:
   m_ObjectHideFlags: 0
@@ -583,12 +573,12 @@ GameObject:
   - component: {fileID: 6443230276239260532}
   - component: {fileID: 7070240694606479119}
   m_Layer: 5
-  m_Name: Time Text
+  m_Name: Level Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &50099297469803595
 RectTransform:
   m_ObjectHideFlags: 0
@@ -636,7 +626,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Time:'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8abe1e37fe7bf433896970245b936749, type: 2}
   m_sharedMaterial: {fileID: 21175996417216586, guid: 8abe1e37fe7bf433896970245b936749,
@@ -647,7 +637,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0.016162038, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -826,19 +816,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2358631575993272059}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4512537265877531657}
-        m_TargetAssemblyTypeName: GamaManager1, Assembly-CSharp
-        m_MethodName: GotoLevel
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &4070636689893134624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,19 +1074,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1330254803574392953}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4512537265877531657}
-        m_TargetAssemblyTypeName: GamaManager1, Assembly-CSharp
-        m_MethodName: GotoLevel
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &4566460431098976451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1669,19 +1635,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1582866698983953171}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4512537265877531657}
-        m_TargetAssemblyTypeName: GamaManager1, Assembly-CSharp
-        m_MethodName: GotoLevel
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &7579396404085088363
 GameObject:
   m_ObjectHideFlags: 0
