@@ -36,11 +36,10 @@ public class GamaManager1 : MonoBehaviour
     public void Winning() { 
         winningText.gameObject.SetActive(true);
         Time.timeScale = 0;
+        GlobalGameManager.instance.levelCompleted[SceneManager.GetActiveScene().buildIndex] = true;
         Debug.Log("Level " + SceneManager.GetActiveScene().buildIndex + " completed.");
         if (SceneManager.sceneCountInBuildSettings <= SceneManager.GetActiveScene().buildIndex + 1)
             nextLevel.gameObject.SetActive(false);
-        else
-            GlobalGameManager.instance.levelCompleted[SceneManager.GetActiveScene().buildIndex] = true;
         
     }
 
