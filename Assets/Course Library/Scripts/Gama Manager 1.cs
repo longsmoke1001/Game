@@ -37,7 +37,11 @@ public class GamaManager1 : MonoBehaviour
         winningText.gameObject.SetActive(true);
         Time.timeScale = 0;
         Debug.Log("Level " + SceneManager.GetActiveScene().buildIndex + " completed.");
-        GlobalGameManager.instance.levelCompleted[SceneManager.GetActiveScene().buildIndex] = true;
+        if (SceneManager.sceneCountInBuildSettings <= SceneManager.GetActiveScene().buildIndex + 1)
+            nextLevel.gameObject.SetActive(false);
+        else
+            GlobalGameManager.instance.levelCompleted[SceneManager.GetActiveScene().buildIndex] = true;
+        
     }
 
     void RetryLevel() { 
