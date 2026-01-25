@@ -11,7 +11,9 @@ public class GamaManager1 : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gameOverText;
     [SerializeField] private TextMeshProUGUI winningText;
     [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private TextMeshProUGUI pauseText;
     [SerializeField] private Button retry, exit, nextLevel,exit2;
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,12 +22,17 @@ public class GamaManager1 : MonoBehaviour
         retry.onClick.AddListener(RetryLevel);
         exit.onClick.AddListener(ExitToMenu);
         exit2.onClick.AddListener(ExitToMenu);
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = GlobalGameManager.instance.volume;
+
     }
 
     // Update is called once per frame
     void Update()
     {
- 
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Time.timeScale =1-Time.timeScale;
+
     }
     public void GameOver()
     {

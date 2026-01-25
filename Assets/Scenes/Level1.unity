@@ -1941,6 +1941,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be977f96ecd18949bb1a85e20e1921d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 0}
+  volume: 0.2
 --- !u!4 &1852299300
 Transform:
   m_ObjectHideFlags: 0

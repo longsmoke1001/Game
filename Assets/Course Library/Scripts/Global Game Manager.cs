@@ -8,6 +8,8 @@ public class GlobalGameManager : MonoBehaviour
     public static GlobalGameManager instance { get; private set; }
     private GameObject goal;
     public bool[] levelCompleted { get; private set; } = new bool[10];
+    [SerializeField] Slider volumeSlider;
+    public float volume=0.2f;
     // Start is called before the first frame update
     void Awake()
     {
@@ -31,7 +33,8 @@ public class GlobalGameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (volumeSlider!=null)
+            volume =volumeSlider.value;
     }
     private void OnMouseUpAsButton()
     {

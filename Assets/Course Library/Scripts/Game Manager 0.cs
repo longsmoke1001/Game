@@ -29,7 +29,7 @@ public class GameManager0 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        audioSource.volume = GlobalGameManager.instance.volume;
     }
 
     public void GotoLevel(int i)
