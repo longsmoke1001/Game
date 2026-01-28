@@ -24,8 +24,7 @@ public class GlobalGameManager : MonoBehaviour
 
     void Start()
     {
-        if (volumeSlider!=null)
-            volumeSlider.value = 0.2f;
+
     }
     void CompletingLevel(int level)
     {
