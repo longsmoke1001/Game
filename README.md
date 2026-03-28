@@ -20,4 +20,4 @@ A 3D platform game where the player controls a ball to reach the goal. Built wit
 - Visual Studio
 
 ## Play Demo
-[![Gameplay Demo](https://img.youtube.com/vi/影片ID/0.jpg)](https://youtu.be/影片ID)
+Playable demo: [Unity Play](https://play.unity.com/en/games/950e66e8-d9e3-4c06-98db-629959d6e916/jumping-game) | Gameplay video: [YouTube](https://www.youtube.com/watch?v=AhMLLadeL-M)
