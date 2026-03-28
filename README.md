@@ -20,4 +20,4 @@ A 3D platform game where the player controls a ball to reach the goal. Built wit
 - Visual Studio
 
 ## Play Demo
-https://www.youtube.com/watch?v=AhMLLadeL-M
+[![Gameplay Demo](https://img.youtube.com/vi/影片ID/0.jpg)](https://youtu.be/影片ID)
