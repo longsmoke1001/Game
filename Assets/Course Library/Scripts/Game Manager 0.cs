@@ -8,10 +8,14 @@ public class GameManager0 : MonoBehaviour
 {
     private bool[] levelCompleted = new bool[10];
     [SerializeField] private Button[] levelButton;
+    [SerializeField] private GameObject start;
+    [SerializeField] private Button startButton;
+    [SerializeField] private GameObject stageSelect;
     AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
+        startButton.onClick.AddListener(ShowStageSelect);
         audioSource = GetComponent<AudioSource>();
         Debug.Log("Global Game Manager started.");
         audioSource.Play();
@@ -21,9 +25,16 @@ public class GameManager0 : MonoBehaviour
             if (levelCompleted[i])
             {
                 Debug.Log("Level " + i + " completed.");
-                levelButton[i-1].gameObject.GetComponent<Image>().color = Color.green;
+                levelButton[i - 1].gameObject.GetComponent<Image>().color = Color.green;
             }
         }
+
+    }
+
+    public void ShowStageSelect()
+    {
+        stageSelect.SetActive(true);
+        start.SetActive(false);
     }
 
     // Update is called once per frame
