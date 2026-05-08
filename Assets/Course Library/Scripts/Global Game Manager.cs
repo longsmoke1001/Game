@@ -9,6 +9,8 @@ public class GlobalGameManager : MonoBehaviour
     private GameObject goal;
     public bool[] levelCompleted { get; private set; } = new bool[10];
     [SerializeField] Slider volumeSlider;
+    [SerializeField] Slider speedSlider;
+    [SerializeField] public float ballSpeed{get; private set;}=0.7f;
     public float volume=0.2f;
     // Start is called before the first frame update
     void Awake()
@@ -22,9 +24,13 @@ public class GlobalGameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    void VolumeChange(float f){
+        ballSpeed=0.7f*0.7f/f;
+    }
     void Start()
     {
-
+        if (speedSlider)
+            speedSlider.onValueChanged.AddListener(VolumeChange);
     }
     void CompletingLevel(int level)
     {

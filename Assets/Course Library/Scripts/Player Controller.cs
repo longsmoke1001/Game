@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        jumpTime=GlobalGameManager.instance.ballSpeed;
         jumpSpeed= 2* distY / jumpTime;
         playerRb = GetComponent<Rigidbody>();
         Physics.gravity = Vector3.down*jumpCorrection*2*jumpSpeed/jumpTime;
@@ -74,7 +75,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         PositionAdjust();
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+        //if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
         {
             GetVelocity();
             GetMultiplier();

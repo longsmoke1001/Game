@@ -11,11 +11,14 @@ public class GameManager0 : MonoBehaviour
     [SerializeField] private GameObject start;
     [SerializeField] private Button startButton;
     [SerializeField] private GameObject stageSelect;
+    [SerializeField] private GameObject setting;
+    [SerializeField] private Button settingButton;
     AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         startButton.onClick.AddListener(ShowStageSelect);
+        settingButton.onClick.AddListener(SettingButton);
         audioSource = GetComponent<AudioSource>();
         Debug.Log("Global Game Manager started.");
         audioSource.Play();
@@ -37,6 +40,10 @@ public class GameManager0 : MonoBehaviour
         start.SetActive(false);
     }
 
+    public void SettingButton(){
+        start.SetActive(!start.activeSelf);
+        setting.SetActive(!setting.activeSelf);
+    }
     // Update is called once per frame
     void Update()
     {
