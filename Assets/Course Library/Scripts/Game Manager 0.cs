@@ -7,18 +7,20 @@ using UnityEngine.UI;
 public class GameManager0 : MonoBehaviour
 {
     private bool[] levelCompleted = new bool[10];
-    [SerializeField] private Button[] levelButton;
+    [SerializeField] private List<Button> levelButton;
     [SerializeField] private GameObject start;
     [SerializeField] private Button startButton;
     [SerializeField] private GameObject stageSelect;
     [SerializeField] private GameObject setting;
     [SerializeField] private Button settingButton;
+    [SerializeField] private Button backButton;
     AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         startButton.onClick.AddListener(ShowStageSelect);
         settingButton.onClick.AddListener(SettingButton);
+        backButton.onClick.AddListener(BackButton);
         audioSource = GetComponent<AudioSource>();
         Debug.Log("Global Game Manager started.");
         audioSource.Play();
@@ -31,13 +33,23 @@ public class GameManager0 : MonoBehaviour
                 levelButton[i - 1].gameObject.GetComponent<Image>().color = Color.green;
             }
         }
+        for (int i=0;i<levelButton.Count;i++){
+            int x=i;
+            levelButton[i].onClick.AddListener(()=>{GotoLevel(1);GlobalGameManager.instance.currentLevel=x+1;});
+        }
 
     }
 
+    void BackButton(){
+        start.SetActive(true);
+        settingButton.gameObject.SetActive(true);
+        stageSelect.SetActive(false);
+    }
     public void ShowStageSelect()
     {
         stageSelect.SetActive(true);
         start.SetActive(false);
+        settingButton.gameObject.SetActive(false);
     }
 
     public void SettingButton(){

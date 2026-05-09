@@ -21,7 +21,7 @@ public class MovingBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Time.time-time) % (2*range/moveSpeed) >= range/moveSpeed)
+        if ((Time.timeSinceLevelLoad) % (2*range/moveSpeed) >= range/moveSpeed)
         {
             transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
         }

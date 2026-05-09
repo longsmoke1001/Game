@@ -14,6 +14,8 @@ public class GamaManager1 : MonoBehaviour
     [SerializeField] private TextMeshProUGUI pauseText;
     [SerializeField] private Button retry, exit, nextLevel,exit2;
     [SerializeField] private List<GameObject> levels;
+    [SerializeField] private Image image;
+    [SerializeField] private Image winningImage;
     AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
@@ -38,13 +40,17 @@ public class GamaManager1 : MonoBehaviour
     public void GameOver()
     {
         gameOverText.gameObject.SetActive(true);
+        image.gameObject.SetActive(true);
         Time.timeScale = 0;
     }
 
     public void Winning() { 
+        winningImage.gameObject.SetActive(true);
         winningText.gameObject.SetActive(true);
+        if (GlobalGameManager.instance.currentLevel==levels.Count)
+            nextLevel.gameObject.SetActive(false);
         Time.timeScale = 0;
-        GlobalGameManager.instance.levelCompleted[SceneManager.GetActiveScene().buildIndex] = true;
+        GlobalGameManager.instance.levelCompleted[GlobalGameManager.instance.currentLevel] = true;
         Debug.Log("Level " + SceneManager.GetActiveScene().buildIndex + " completed.");
         if (SceneManager.sceneCountInBuildSettings <= SceneManager.GetActiveScene().buildIndex + 1)
             nextLevel.gameObject.SetActive(false);
