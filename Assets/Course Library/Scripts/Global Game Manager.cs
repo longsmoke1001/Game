@@ -11,6 +11,7 @@ public class GlobalGameManager : MonoBehaviour
     [SerializeField] Slider volumeSlider;
     [SerializeField] Slider speedSlider;
     [SerializeField] public float ballSpeed{get; private set;}=0.7f;
+    public int currentLevel=1;
     public float volume=0.2f;
     // Start is called before the first frame update
     void Awake()

@@ -5,21 +5,15 @@ using UnityEngine;
 public class Goal : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private GameObject gameManager;
+    [SerializeField] private GamaManager1 gameManager;
     void Start()
     {
-        
+        gameManager=FindFirstObjectByType<GamaManager1>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     private void OnTriggerEnter(Collider other)
     {
-        gameManager.GetComponent<GamaManager1>().Winning();
+        gameManager.Winning();
         Destroy(gameObject);
     }
 }

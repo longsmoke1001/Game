@@ -13,18 +13,19 @@ public class GamaManager1 : MonoBehaviour
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private TextMeshProUGUI pauseText;
     [SerializeField] private Button retry, exit, nextLevel,exit2;
+    [SerializeField] private List<GameObject> levels;
     AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        levelText.text = "Level " + SceneManager.GetActiveScene().buildIndex;
+        levelText.text = "Level " + GlobalGameManager.instance.currentLevel;
         nextLevel.onClick.AddListener(NextLevel);
         retry.onClick.AddListener(RetryLevel);
         exit.onClick.AddListener(ExitToMenu);
         exit2.onClick.AddListener(ExitToMenu);
         audioSource = GetComponent<AudioSource>();
         audioSource.volume = GlobalGameManager.instance.volume;
-
+        Instantiate(levels[GlobalGameManager.instance.currentLevel-1],Vector3.zero,transform.rotation);
     }
 
     // Update is called once per frame
@@ -58,7 +59,8 @@ public class GamaManager1 : MonoBehaviour
         GotoLevel(0);
     }
     void NextLevel() { 
-        GotoLevel(SceneManager.GetActiveScene().buildIndex + 1);
+        GlobalGameManager.instance.currentLevel++;
+        GotoLevel(1);
     }
     public void GotoLevel(int i) { 
         SceneManager.LoadScene(i);
