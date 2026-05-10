@@ -7,7 +7,7 @@ public class GlobalGameManager : MonoBehaviour
 {
     public static GlobalGameManager instance { get; private set; }
     private GameObject goal;
-    public bool[] levelCompleted { get; private set; } = new bool[10];
+    public bool[] levelCompleted { get; private set; } = new bool[100];
     [SerializeField] Slider volumeSlider;
     [SerializeField] Slider speedSlider;
     [SerializeField] public float ballSpeed{get; private set;}=0.7f;
@@ -33,7 +33,7 @@ public class GlobalGameManager : MonoBehaviour
         if (speedSlider)
             speedSlider.onValueChanged.AddListener(VolumeChange);
     }
-    void CompletingLevel(int level)
+    public void CompletingLevel(int level)
     {
         levelCompleted[level]=true;
     }

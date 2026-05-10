@@ -51,10 +51,7 @@ public class GamaManager1 : MonoBehaviour
             nextLevel.gameObject.SetActive(false);
         Time.timeScale = 0;
         GlobalGameManager.instance.levelCompleted[GlobalGameManager.instance.currentLevel] = true;
-        Debug.Log("Level " + SceneManager.GetActiveScene().buildIndex + " completed.");
-        if (SceneManager.sceneCountInBuildSettings <= SceneManager.GetActiveScene().buildIndex + 1)
-            nextLevel.gameObject.SetActive(false);
-        
+        Debug.Log("Level " + SceneManager.GetActiveScene().buildIndex + " completed.");     
     }
 
     void RetryLevel() { 

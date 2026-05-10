@@ -22,7 +22,7 @@ public class FlashingBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        x = Mathf.PingPong((Time.time-time) * 2 / jumpInterval / flashInterval+alteratingFactor*2, 1f);
+        x = 1-Mathf.PingPong((Time.timeSinceLevelLoad) * 2 / jumpInterval / flashInterval+alteratingFactor*2, 1f);
         mat.color=new Color (0,0,0,x);
         if (x < 0.5)
         {
