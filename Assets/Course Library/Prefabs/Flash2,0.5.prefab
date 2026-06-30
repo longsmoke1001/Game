@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6415175250386484939}
   - component: {fileID: 3769022122699402538}
   - component: {fileID: 2723968013394905005}
+  - component: {fileID: 7502961396940868806}
   m_Layer: 0
   m_Name: Flash2,0.5
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4, y: 10, z: 4}
-  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5705404070410884556}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -5495902117074765545, guid: ae667e516710d5545b9fda2b24d58c36, type: 3}
 --- !u!23 &6415175250386484939
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -104,7 +105,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2723968013394905005
 MonoBehaviour:
@@ -120,3 +121,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashInterval: 2
   alteratingFactor: 0.5
+--- !u!114 &7502961396940868806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5705404070410884556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94dd054fb23a2154bbcd60e8f872c408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

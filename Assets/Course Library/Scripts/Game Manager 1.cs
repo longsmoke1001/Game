@@ -6,7 +6,7 @@ using UnityEngine.Rendering.UI;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GamaManager1 : MonoBehaviour
+public class GameManager1 : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI gameOverText;
     [SerializeField] private TextMeshProUGUI winningText;
@@ -20,6 +20,7 @@ public class GamaManager1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         levelText.text = "Level " + GlobalGameManager.instance.currentLevel;
         nextLevel.onClick.AddListener(NextLevel);
         retry.onClick.AddListener(RetryLevel);
@@ -65,8 +66,8 @@ public class GamaManager1 : MonoBehaviour
         GlobalGameManager.instance.currentLevel++;
         GotoLevel(1);
     }
-    public void GotoLevel(int i) { 
+    public void GotoLevel(int i) {
+        Time.timeScale = 1;
         SceneManager.LoadScene(i);
-        Time.timeScale= 1;
     }
 }

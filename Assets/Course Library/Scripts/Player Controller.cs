@@ -6,55 +6,60 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody playerRb;
-    [field: SerializeField] public float jumpTime { get;private set; }
+    [field: SerializeField] public float jumpTime { get; private set; }
     [SerializeField] private float distY;
     [SerializeField] private float distXZ;
-    [SerializeField] private GameObject gameManager;
+    private GameManager1 gameManager;
     float jumpSpeed;
-    float jumpCorrection=6;
+    float jumpCorrection = 6;
     private int moveMultiplier = 1;
     private Vector3 velocityX;
     private Vector3 velocityZ;
     // Start is called before the first frame update
     void Start()
     {
-        jumpTime=GlobalGameManager.instance.ballSpeed;
-        jumpSpeed= 2* distY / jumpTime;
+        jumpTime = GlobalGameManager.instance.ballSpeed;
+        jumpSpeed = 2 * distY / jumpTime;
         playerRb = GetComponent<Rigidbody>();
-        Physics.gravity = Vector3.down*jumpCorrection*2*jumpSpeed/jumpTime;
+        gameManager = FindAnyObjectByType<GameManager1>();
+        Physics.gravity = Vector3.down * jumpCorrection * 2 * jumpSpeed / jumpTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (transform.position.y < -10)
+        {
+            gameManager.GameOver();
+        }
     }
-     void GetVelocity()
+    void GetVelocity()
     {
-            if (Input.GetKey(KeyCode.A))
-            {
-                velocityX = Vector3.left;
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                velocityX = Vector3.right;
-            }
-            else
-            {
-                velocityX = Vector3.zero;
-            }
-            if (Input.GetKey(KeyCode.W))
-            {
-                velocityZ = Vector3.forward;
-            }
-            else if (Input.GetKey(KeyCode.S))
-            {
-                velocityZ = Vector3.back;
-            }
-            else
-            {
-                velocityZ = Vector3.zero;
-            }
+        if (Input.GetKey(KeyCode.A))
+        {
+            velocityX = Vector3.left;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            velocityX = Vector3.right;
+        }
+        else
+        {
+            velocityX = Vector3.zero;
+        }
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            velocityZ = Vector3.forward;
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            velocityZ = Vector3.back;
+        }
+        else
+        {
+            velocityZ = Vector3.zero;
+        }
     }
     void GetMultiplier()
     {
@@ -80,8 +85,8 @@ public class PlayerController : MonoBehaviour
             GetVelocity();
             GetMultiplier();
         }
-        playerRb.velocity = (velocityX + velocityZ) * distXZ / jumpTime * moveMultiplier + Vector3.up* jumpSpeed * jumpCorrection ;
+        playerRb.velocity = (velocityX + velocityZ) * distXZ / jumpTime * moveMultiplier + Vector3.up * jumpSpeed * jumpCorrection;
         Debug.Log(transform.position);
     }
-    
+
 }

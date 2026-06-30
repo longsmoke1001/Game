@@ -5,7 +5,8 @@ using UnityEngine;
 public class VolatileBlock : MonoBehaviour
 {
     Material mat;
-    [SerializeField] private float lives; 
+    [SerializeField] private float lives;
+    [SerializeField] private float fadeTime=0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +32,18 @@ public class VolatileBlock : MonoBehaviour
         }
         else if (lives <= 0)
         {
-            Destroy(gameObject);
+            StartCoroutine(Fade());
         }
+    }
+    IEnumerator Fade()
+    {
+        float t = 0;
+        while (t< fadeTime)
+        {
+            t += Time.deltaTime;
+            mat.color = new Color(mat.color.r, mat.color.g, mat.color.b, Mathf.Lerp(1, 0, t / fadeTime));
+            yield return null;
+        }
+        Destroy(gameObject);
     }
 }

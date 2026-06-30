@@ -18,7 +18,7 @@ public class Trap : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        gameManager.GetComponent<GamaManager1>().GameOver();
+        gameManager.GetComponent<GameManager1>().GameOver();
         Debug.Log("Triggered Game Over");
     }
 }
