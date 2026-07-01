@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private int moveMultiplier = 1;
     private Vector3 velocityX;
     private Vector3 velocityZ;
+    private float XRotation;
+    private float ZRotation;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,11 +37,11 @@ public class PlayerController : MonoBehaviour
     }
     void GetVelocity()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A)||Input.GetKey(KeyCode.LeftArrow))
         {
             velocityX = Vector3.left;
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D)||Input.GetKey(KeyCode.RightArrow))
         {
             velocityX = Vector3.right;
         }
@@ -48,11 +50,11 @@ public class PlayerController : MonoBehaviour
             velocityX = Vector3.zero;
         }
 
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKey(KeyCode.W)||Input.GetKey(KeyCode.UpArrow))
         {
             velocityZ = Vector3.forward;
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S)||Input.GetKey(KeyCode.DownArrow))
         {
             velocityZ = Vector3.back;
         }
@@ -85,6 +87,8 @@ public class PlayerController : MonoBehaviour
             GetVelocity();
             GetMultiplier();
         }
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        playerRb.angularVelocity = new Vector3(velocityZ.z*180*Mathf.Deg2Rad, 0, -velocityX.x * 180 * Mathf.Deg2Rad);
         playerRb.velocity = (velocityX + velocityZ) * distXZ / jumpTime * moveMultiplier + Vector3.up * jumpSpeed * jumpCorrection;
         Debug.Log(transform.position);
     }

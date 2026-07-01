@@ -19,11 +19,12 @@ public class GameManager0 : MonoBehaviour
     [SerializeField] Slider volumeSlider;
     [SerializeField] Slider speedSlider;
     [SerializeField] GlobalGameManager globalGameManager;
+    [SerializeField] Sprite lightGreen;
+    [SerializeField] Button OKButton;
     AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        globalGameManager = GlobalGameManager.instance;
         startButton.onClick.AddListener(ShowStageSelect);
         settingButton.onClick.AddListener(SettingButton);
         backButton.onClick.AddListener(BackButton);
@@ -36,13 +37,14 @@ public class GameManager0 : MonoBehaviour
             if (levelCompleted[i])
             {
                 Debug.Log("Level " + i + " completed.");
-                levelButton[i - 1].gameObject.GetComponent<Image>().color = Color.green;
+                levelButton[i - 1].gameObject.GetComponent<Image>().sprite = lightGreen;
             }
         }
         for (int i=0;i<levelButton.Count;i++){
             int x=i;
             levelButton[i].onClick.AddListener(()=>{GotoLevel(1);GlobalGameManager.instance.currentLevel=x+1;});
         }
+        OKButton.onClick.AddListener(() => { start.SetActive(!start.activeSelf); settingButton.gameObject.SetActive(!settingButton.gameObject.activeSelf); howToPlayUI.SetActive(!howToPlayUI.activeSelf); });
         howToPlayButton.onClick.AddListener(() => { start.SetActive(!start.activeSelf); settingButton.gameObject.SetActive(!settingButton.gameObject.activeSelf); howToPlayUI.SetActive(!howToPlayUI.activeSelf); });
         speedSlider.value = 0.7f * 0.7f / globalGameManager.ballSpeed;
         if (speedSlider)

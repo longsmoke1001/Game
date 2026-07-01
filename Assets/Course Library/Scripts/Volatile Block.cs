@@ -21,7 +21,7 @@ public class VolatileBlock : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        lives-=0.5f;
+        lives-=1f;
         if (lives == 2)
         {
             mat.color = Color.red+Color.green/2;

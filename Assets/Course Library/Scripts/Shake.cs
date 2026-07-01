@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class Shake : MonoBehaviour
 {
-
     private void OnCollisionEnter(Collision collision)
     {
-        MyShakeScale(0.5f, 0.2f, 5);
-    }
-    public void MyShakeScale(float duration, float strength, int vibrato)
-    {
-        StartCoroutine(ShakeRoutine(duration, strength, vibrato));
+        StartCoroutine(ShakeRoutine(0.5f, 0.2f, 5));
     }
 
     private IEnumerator ShakeRoutine(float duration, float strength, int vibrato)
     {
+        Vector3 originalScale= transform.localScale;
         float t = 0;
         while (t < duration)
         {
             t += Time.deltaTime;
-            transform.localScale = (-Mathf.Sin(t * vibrato * Mathf.PI * 2) * strength * Mathf.Lerp(1, 0, t / duration) + 1) * Vector3.one;
+            transform.localScale = (-Mathf.Sin(t * vibrato * Mathf.PI * 2) * strength * Mathf.Lerp(1, 0, t / duration) + 1) * originalScale;
             yield return null;
         }
     }

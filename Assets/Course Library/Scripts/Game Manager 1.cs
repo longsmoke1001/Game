@@ -16,26 +16,40 @@ public class GameManager1 : MonoBehaviour
     [SerializeField] private List<GameObject> levels;
     [SerializeField] private Image image;
     [SerializeField] private Image winningImage;
+    [SerializeField] private GameObject tutorialUI;
+    [SerializeField] private Button OKButton;
+    private GlobalGameManager globalGameManager;
     AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
+        globalGameManager = GlobalGameManager.instance;
         Time.timeScale = 1;
-        levelText.text = "Level " + GlobalGameManager.instance.currentLevel;
+        levelText.text = "Level " + globalGameManager.currentLevel;
         nextLevel.onClick.AddListener(NextLevel);
         retry.onClick.AddListener(RetryLevel);
         exit.onClick.AddListener(ExitToMenu);
         exit2.onClick.AddListener(ExitToMenu);
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = GlobalGameManager.instance.volume;
-        Instantiate(levels[GlobalGameManager.instance.currentLevel-1],Vector3.zero,transform.rotation);
+        audioSource.volume = globalGameManager.volume;
+        Instantiate(levels[globalGameManager.currentLevel-1],Vector3.zero,transform.rotation);
+        if (globalGameManager.firstTimePlaying)
+        {
+            tutorialUI.SetActive(true);
+            globalGameManager.firstTimePlaying = false;
+            Time.timeScale = 0;
+            OKButton.onClick.AddListener(() => { tutorialUI.SetActive(false); Time.timeScale = 1; });
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            Time.timeScale =1-Time.timeScale;
+        {
+            Time.timeScale = 1 - Time.timeScale;
+            pauseText.gameObject.SetActive(!pauseText.gameObject.activeSelf);
+        }
 
     }
     public void GameOver()
@@ -48,10 +62,10 @@ public class GameManager1 : MonoBehaviour
     public void Winning() { 
         winningImage.gameObject.SetActive(true);
         winningText.gameObject.SetActive(true);
-        if (GlobalGameManager.instance.currentLevel==levels.Count)
+        if (globalGameManager.currentLevel==levels.Count)
             nextLevel.gameObject.SetActive(false);
         Time.timeScale = 0;
-        GlobalGameManager.instance.levelCompleted[GlobalGameManager.instance.currentLevel] = true;
+        globalGameManager.levelCompleted[globalGameManager.currentLevel] = true;
         Debug.Log("Level " + SceneManager.GetActiveScene().buildIndex + " completed.");     
     }
 
@@ -63,7 +77,7 @@ public class GameManager1 : MonoBehaviour
         GotoLevel(0);
     }
     void NextLevel() { 
-        GlobalGameManager.instance.currentLevel++;
+        globalGameManager.currentLevel++;
         GotoLevel(1);
     }
     public void GotoLevel(int i) {
